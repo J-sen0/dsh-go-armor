@@ -4,6 +4,9 @@
 往子代理 `context` 压一份契约、在 `agent/pre-step` 上挂一个拒答自愈守卫。不挂工具链、
 不碰技能目录、不改宿主代码、不做网安工具集成。
 
+> 仓库：[`J-sen0/dsh-go-armor`](https://github.com/J-sen0/dsh-go-armor)（`main` 分支）· 包名 `dsh-eva-breaker`
+> 直装：`pnpm add "dsh-eva-breaker@github:J-sen0/dsh-go-armor"`，再把包名加进 `dsh.profile.bundles`。
+>
 > 本仓库**只交代码，不执行安装**。装法在下面「安装」一节，四条命令以内。
 
 ```
