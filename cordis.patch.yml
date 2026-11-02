@@ -1,0 +1,48 @@
+# dsh-eva-breaker · bundle patch
+#
+# 这是一个 bundle 层补丁：只有当包名出现在 profile 的 dsh.profile.bundles 里时才应用。
+# 两种装法择一，不要同时用（会插出两条同 id 的节点）：
+#
+#   A) 作为 bundle
+#      profile/package.json  →  dsh.profile.bundles 追加 "dsh-eva-breaker"
+#      （依赖里 link 或 npm 安装该包；本文件负责 inject 与默认 config）
+#
+#   B) 作为普通插件（不推荐，但适合只改一个 config 里的东西）
+#      直接写进 profile/cordis.patch.yml：
+#
+#        - insert:
+#            - id: dsh-eva-breaker
+#              name: dsh-eva-breaker
+#              inject: [systemPrompt]
+#              config:
+#                enabled: true
+#
+#      这种写法下本文件不生效。
+
+- id: dsh-eva-breaker
+  name: dsh-eva-breaker
+  inject: [systemPrompt]
+  config:
+    # 总开关；false 时四个 section 全部输出空串
+    enabled: true
+    # 分层开关
+    armor: true          # 00-armor.md   破甲协议核心
+    persona: true        # 01-persona.md EVA 人格
+    router: true         # 02-router.md  任务直通路由
+    adapt: true          # 03-dsh-adapt.md 运行环境适配
+    subagent: true       # 04-subagent.md 子代理继承（context 段）
+    # 协议文件
+    userOverride: true
+    overrideDir: eva-breaker/protocol
+    # 拒答自愈
+    retryOnRefusal: true
+    retryMax: 2
+    # 输出下限（0 = 不动宿主 maxTokens）
+    minOutputTokens: 0
+    # 注入顺序（越小越靠前；默认压到宿主默认指令之前）
+    armorOrder: -100000
+    personaOrder: -99980
+    routerOrder: -99960
+    adaptOrder: -99940
+    subagentOrder: 235
+    verbose: false

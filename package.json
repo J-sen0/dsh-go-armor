@@ -1,0 +1,59 @@
+{
+  "name": "dsh-eva-breaker",
+  "version": "3.0.0",
+  "description": "EVA 人格破甲协议（dsh 插件）：人格层 + 破甲协议 + 拒答自愈 + 子代理继承。纯提示词层，不挂工具链、不碰技能目录。",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./index.js": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "protocol",
+    "docs",
+    "scripts",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/J-sen0/dsh-go-armor.git"
+  },
+  "homepage": "https://github.com/J-sen0/dsh-go-armor#readme",
+  "bugs": {
+    "url": "https://github.com/J-sen0/dsh-go-armor/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "eva",
+    "persona",
+    "armor",
+    "jailbreak",
+    "prompt-engineering",
+    "redteam",
+    "llm-security"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "dshTarget": "0.2.1-rc.2",
+  "dshTargets": [
+    "0.2.1-rc.2",
+    "0.2.1-rc.5"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
